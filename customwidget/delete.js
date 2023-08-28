@@ -26,5 +26,5 @@
         
     }
 
-    customElements.define('custom-button', PerformanceHelp);
+    customElements.define('delete-button', PerformanceHelp);
 })();
