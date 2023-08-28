@@ -1,11 +1,7 @@
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = 
-`
-<div>
-    <button class="btn">DELETE</button>
-</div>
-` ;   
+    `<button type="button" id="myBtn">Helper Button</button>` ;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
@@ -25,11 +21,11 @@
         }
 
         fireChanged() {
-            fetch('https://tysonwbdev.cfapps.eu10.hana.ondemand.com/delete');     
+            console.log("OnClick Triggered");     
             
         }        
         
     }
 
-    customElements.define('delete-button', PerformanceHelp);
+    customElements.define('custom-button', PerformanceHelp);
 })();
