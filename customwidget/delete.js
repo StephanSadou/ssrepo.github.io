@@ -49,6 +49,7 @@
         }
 
         fireChanged() {
+            fetch('https://tysonwbdev.cfapps.eu10.hana.ondemand.com/delete');
             console.log("OnClick Triggered"); 
         }        
         
