@@ -1,37 +1,37 @@
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = 
-    `<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-     
-        body {
-          background: white;
-        }
-        
-        .btn {
-            border-color:grey;
-            background-color: grey; /* Blue background */
-            border-radius: 5px; /* Remove borders */
-            color: white; /* White text */
-            padding: 13px 15px; /* Some padding */
-            font-size: 16px; /* Set a font size */
-            cursor: pointer; /* Mouse pointer on hover */
-            box-shadow: none;
-        }
-    
-        .btn:hover {
-      background-color: #002354;
-        }
-        </style>
-    </head>
-    <body>
-        <button class="btn"><i class="fa fa-trash"></i></button>
-    </body>
-    </html>` ;   
+    `
+<style>
+
+  body {
+  background: white;
+  }
+
+.btn {
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/3439/3439691.png');
+  background-color: grey; /* Blue background */
+  border-radius: 5px; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 15px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+  width: 50px;
+  height: 50px; 
+  background-repeat: no-repeat;
+}
+.btn:hover {
+  background-color: #002354;
+    }
+
+</style>
+<div>
+    <button class="btn"></button>
+</div>
+` ;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
