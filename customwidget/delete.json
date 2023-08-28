@@ -1,0 +1,41 @@
+{
+	"name": "deletecustomwidget",
+	"description": "Delete Record",
+	"newInstancePrefix": "deletebtn",
+	"eula": "",
+	"vendor": "Simon",
+	"license": "",
+	"id": "deletebtn",
+	"version": "0.0.1",
+	"icon": "https://cdn-icons-png.flaticon.com/512/484/484662.png",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "custom-button",
+			"url": "https://git.eu2.hana.ondemand.com/hij1m9fncg/tyfcustomwidget/delete.js",
+			"integrity": ""	,
+			"ignoreIntegrity": true
+			
+		}		
+	],
+	"properties": {
+		"width": {
+			"type": "integer",
+			"default": 192
+		},
+		"height": {
+			"type": "integer",
+			"default": 32
+		}
+	},
+	"methods": {
+		"clear": {
+			"description": "Clear the resultset"
+		}
+	},
+	"events": {
+		"onClick": {
+			"description": "Called when the user clicks the button."
+		}
+	}
+}
