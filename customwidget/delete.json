@@ -6,7 +6,7 @@
 	"vendor": "Simon",
 	"license": "",
 	"id": "deletebtn",
-	"version": "0.0.1",
+	"version": "1.0.1",
 	"icon": "https://cdn-icons-png.flaticon.com/512/484/484662.png",
 	"webcomponents": [
 		{
