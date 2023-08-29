@@ -29,7 +29,7 @@
   </style>
 
   <div>
-      <button class="btn"></i></button>
+      <button class="btn"></button>
   </div>`;   
    
     class PerformanceHelp extends HTMLElement {
