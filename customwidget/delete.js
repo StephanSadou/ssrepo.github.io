@@ -19,8 +19,8 @@
     color: white; /* White text */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
-    width: 100%;
-    height: 100%;
+    width: 512px;
+    height: 512px;
   }
   .btn:hover {
     background-color: #002354;
