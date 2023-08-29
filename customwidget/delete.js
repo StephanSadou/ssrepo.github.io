@@ -1,20 +1,22 @@
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = 
-    `<style>
+    `  <style>
 
     body {
     background: white;
     }
 
   .btn {
-    display: inline-block;
+    display: flex;
+    background-image: url(Images/trash.png);
+    background-repeat: no-repeat;
+    background-position: center; 
     align-items: center;
     justify-content: center;
     background-color: grey; /* Blue background */
     border-radius: 5px; /* Remove borders */
     color: white; /* White text */
-    padding: 12px 15px; /* Some padding */
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
     width: 100%;
@@ -25,9 +27,9 @@
       }
 
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <div>
-      <button class="btn"><i class="fa fa-trash"></i></button>
+      <button class="btn"></i></button>
   </div>`;   
    
     class PerformanceHelp extends HTMLElement {
