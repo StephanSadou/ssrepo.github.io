@@ -9,7 +9,7 @@
 
   .btn {
     display: flex;
-    background-image: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trash.png');
+    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trash.png');
     background-repeat: no-repeat;
     background-position: center; 
     align-items: center;
