@@ -21,11 +21,11 @@
 	"properties": {
 		"width": {
 			"type": "integer",
-			"default": 192
+			"default": 50
 		},
 		"height": {
 			"type": "integer",
-			"default": 32
+			"default": 50
 		}
 	},
 	"methods": {
