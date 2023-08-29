@@ -9,7 +9,7 @@
 
   .btn {
     display: flex;
-    background-image: url(Images/trash.png);
+    background-image: url('customwidget/Images/trash.png');
     background-repeat: no-repeat;
     background-position: center; 
     align-items: center;
