@@ -3,33 +3,32 @@
     tmpl.innerHTML = 
     `<style>
 
-  body {
-  background: white;
-  }
-
-.btn {
-  align-items: center;
-  background-size: cover;
-  justify-content: center;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/3439/3439691.png');
-  background-color: grey; /* Blue background */
-  border-radius: 5px; /* Remove borders */
-  color: white; /* White text */
-  padding: 12px 15px; /* Some padding */
-  font-size: 16px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
-  width: 50px;
-  height: 50px; 
-  background-repeat: no-repeat;
-}
-.btn:hover {
-  background-color: #002354;
+    body {
+    background: white;
     }
 
-</style>
-<div>
-    <button class="btn"></button>
-</div>` ;   
+  .btn {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    background-color: grey; /* Blue background */
+    border-radius: 5px; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 15px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    width: 100%;
+    height: 100%;
+  }
+  .btn:hover {
+    background-color: #002354;
+      }
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div>
+      <button class="btn"><i class="fa fa-trash"></i></button>
+  </div>`;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
