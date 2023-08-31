@@ -1,36 +1,39 @@
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = 
-    `  <style>
-
+    `<style>
     body {
     background: white;
     }
+  .container {
+    display: flex;
+    width: 256px;
+    height: 256px;
+  }
 
   .btn {
-    display: flex;
-    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trash.png');
+    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trashbin.png');
     background-repeat: no-repeat;
     background-position: center; 
     align-items: center;
     justify-content: center;
     background-color: grey; /* Blue background */
     border-radius: 5px; /* Remove borders */
-    color: white; /* White text */
-    font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
-    width: 512px;
-    height: 512px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
+    
   .btn:hover {
     background-color: #002354;
       }
 
-  </style>
+</style>
 
-  <div>
-      <button class="btn"></button>
-  </div>`;   
+<div class="container">
+    <button class="btn"></button>
+</div>`;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
