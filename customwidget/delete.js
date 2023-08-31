@@ -33,10 +33,9 @@
 </style>
 
 <div class="container">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <button class="btn"><i class='bx bx-trash bx-lg' style='color:rgba(0, 0, 0, 0.98)'></i></button>
-</div>
-`;   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <button class="btn"><i class="fa fa-trash-o" style="font-size:36px;color:white"></i></i></button>
+</div>`;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
