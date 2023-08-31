@@ -12,7 +12,7 @@
   }
 
   .btn {
-    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trashbin.png');
+    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trashbin2.png');
     background-repeat: no-repeat;
     background-position: center; 
     align-items: center;
