@@ -1,20 +1,19 @@
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = 
-    `<style>
+    `
+<style>
+
     body {
     background: white;
     }
   .container {
     display: flex;
-    width: 256px;
-    height: 256px;
+    width: 100%;
+    height: 100%;
   }
 
   .btn {
-    background: url('https://stephansadou.github.io/ssrepo.github.io/customwidget/Images/trashbin2.png');
-    background-repeat: no-repeat;
-    background-position: center; 
     align-items: center;
     justify-content: center;
     background-color: grey; /* Blue background */
@@ -27,13 +26,17 @@
     
   .btn:hover {
     background-color: #002354;
+    }
+   
       }
 
 </style>
 
 <div class="container">
-    <button class="btn"></button>
-</div>`;   
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <button class="btn"><i class='bx bx-trash bx-lg' style='color:rgba(0, 0, 0, 0.98)'></i></button>
+</div>
+`;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
