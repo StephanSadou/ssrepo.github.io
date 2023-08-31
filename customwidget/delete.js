@@ -31,9 +31,10 @@
       }
 
 </style>
-
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <div class="container">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <button class="btn"><i class="fa fa-trash-o" style="font-size:36px;color:white"></i></i></button>
 </div>`;   
    
