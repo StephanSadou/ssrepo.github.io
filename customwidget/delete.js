@@ -1,9 +1,9 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = 
-    `
+    tmpl.innerHTML = `
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-
     body {
     background: white;
     }
@@ -31,12 +31,11 @@
       }
 
 </style>
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+
 <div class="container">
     <button class="btn"><i class="fa fa-trash-o" style="font-size:36px;color:white"></i></i></button>
-</div>`;   
+</div>
+</head>`;   
    
     class PerformanceHelp extends HTMLElement {
         constructor() {
