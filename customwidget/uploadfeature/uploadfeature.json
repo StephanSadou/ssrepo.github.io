@@ -1,0 +1,41 @@
+{
+	"name": "uploadcustomwidget",
+	"description": "Custom widget to upload documents",
+	"newInstancePrefix": "uploadwidget",
+	"eula": "",
+	"vendor": "Simon",
+	"license": "",
+	"id": "tyfuploadbtn",
+	"version": "1.0.0",
+	"icon": "https://cdn.pixabay.com/photo/2016/01/03/00/43/upload-1118929_960_720.png",
+	"webcomponents": [
+		{
+			"kind": "main",
+			"tag": "upload-button",
+			"url": " https://stephansadou.github.io/ssrepo.github.io/customwidget/delete.js",
+			"integrity": ""	,
+			"ignoreIntegrity": true
+			
+		}		
+	],
+	"properties": {
+		"width": {
+			"type": "integer",
+			"default": 400
+		},
+		"height": {
+			"type": "integer",
+			"default": 275
+		}
+	},
+	"methods": {
+		"clear": {
+			"description": "Clear the resultset"
+		}
+	},
+	"events": {
+		"onClick": {
+			"description": "Called when the user clicks the button."
+		}
+	}
+}
