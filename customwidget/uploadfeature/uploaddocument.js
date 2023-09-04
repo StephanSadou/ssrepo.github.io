@@ -65,31 +65,42 @@
         }
 
         fireChanged() {
-            $(document).ready( function() {
-                $('#uploadfile').change( function() {
-                  let formData = new FormData();
-                  let file = $('#uploadfile')[0].files[0];
-                  formData.append('uploadfile', file);
-              
-                  $.ajax({
-                    url: 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload',
-                    type: 'POST',
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(data){
-                      if (data!=0) {
-                        console.log('upload successful!\n' + data);
-                      }
-                      else {  
-                        console.log('upload failed!\n' + data);
-                      }
-                    }
-                  })
-                });
-              });    
-            
-        }        
+            var form = document.getElementById('formupload');
+            var fileSelect = document.getElementById('uploadfile');
+
+            form.onsubmit = function(event) {
+
+                // Get the files from the input
+                var files = fileSelect.files;
+
+                // Create a FormData object.
+                var formData = new FormData();
+
+                //Grab only one file since this script disallows multiple file uploads.
+                var file = files[0]; 
+
+                // Add the file to the AJAX request.
+                formData.append('myfile', file, file.name);
+
+                // Set up the request.
+                var xhr = new XMLHttpRequest();
+
+                // Open the connection.
+                xhr.open('POST', '/https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
+    
+
+                // Set up a handler for when the task for the request is complete.
+                xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Your upload is successful..');
+                } else {
+                    console.log('An error occurred during the upload. Try again.');
+                        }
+                };
+                // Send the data.
+                xhr.send(formData);
+            }
+}
         
     }
     customElements.define('upload-button', PerformanceHelp);
