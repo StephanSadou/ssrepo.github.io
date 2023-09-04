@@ -5,19 +5,14 @@
 <head>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
-        
         body {
             background-color: white;
         }
 
         .containter {
         display: flex;
+        width: 100%;
+        height: 100%; 
         }
 
         #uploadfile {
