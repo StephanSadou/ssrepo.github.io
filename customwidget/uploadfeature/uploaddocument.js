@@ -57,18 +57,17 @@
               
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("click", event => {
-            var event = new Event("onClick");
+            this.addEventListener("submit", event => {
+            var event = new Event("onSubmit");
             this.fireChanged();           
             this.dispatchEvent(event);
             });           
         }
 
-        fireChanged() {
-            var form = document.getElementById('formupload');
-            var fileSelect = document.getElementById('uploadfile');
-
-            form.onsubmit = function(event) {
+        fireChanged(event) {
+           
+                var form = document.getElementById('formupload');
+                var fileSelect = document.getElementById('uploadfile');
 
                 // Get the files from the input
                 var files = fileSelect.files;
@@ -98,8 +97,7 @@
                         }
                 };
                 // Send the data.
-                xhr.send(formData);
-            }
+                xhr.send(formData);       
 }
         
     }
