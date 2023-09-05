@@ -94,11 +94,11 @@
                 } else {
                     console.log('An error occurred during the upload. Try again.');
                 }
-        };
-
                 // Send the data.
-                xhr.send(formData);
-            }        
-}
+                xhr.send(formData)
+                }
+            }
+        }
+    }
     customElements.define('upload-button', PerformanceHelp);
 })();
