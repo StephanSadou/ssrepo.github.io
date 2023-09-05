@@ -64,10 +64,7 @@
                 this.dispatchEvent(event);
                 })        
         }
-
-        connectedCallback() {
-        }
-
+        
         fireChanged() {
             var fileSelect = this.shadowRoot.getElementById('uploadfile');
 
