@@ -36,6 +36,9 @@
 	"events": {
 		"onClick": {
 			"description": "Called when the user clicks the button."
+		}, 
+		"onSubmit": {
+			"description": "Submit when all information in form is submitted."
 		}
 	}
 }
