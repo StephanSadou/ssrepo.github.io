@@ -62,7 +62,7 @@
               
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("onchange", event => {
+            this.addEventListener("change", event => {
             var event = new Event("onChange");
             this.fireChanged();           
             this.dispatchEvent(event);
