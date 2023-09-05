@@ -40,7 +40,7 @@
 		"onSubmit": {
 			"description": "Submit when all information in form is submitted."
 		},
-		"OnChange": {
+		"onChange": {
 			"description": "Event triggered if there are any changes."
 		}
 	}
