@@ -63,13 +63,13 @@
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this.addEventListener("onchange", event => {
-            var event = new Event("OnChange");
+            var event = new Event("onChange");
             this.fireChanged();           
             this.dispatchEvent(event);
             });           
         }
 
-        fireChanged(event) {
+        fireChanged() {
         var form = document.getElementById('formupload');
         var fileSelect = document.getElementById('uploadfile');
 
@@ -103,12 +103,8 @@
 
         // Send the data.
         xhr.send(formData);
-})();
-
-           
+        }
                 
 }
-        
-    }
     customElements.define('upload-button', PerformanceHelp);
 })();
