@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <form id="formupload" action="https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload" method="post" enctype="multipart/form-data">
+    <form id="formupload" enctype="multipart/form-data">
         <input id="uploadfile" name="uploadfile" type="file">
         <label id="uploadbutton-label" for="uploadfile">
             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
@@ -57,17 +57,15 @@
         init() {              
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("click", event => {
-            var event = new Event("onClick");
-            this.fireChanged();           
-            this.dispatchEvent(event);
-            });           
+            let form = this._shadowRoot.getElementById("formupload");
+            form.addEventListener("submit", this._submit.bind(this));         
         }
-        fireChanged() {
-            var form = document.getElementById('formupload');
-            var fileSelect = document.getElementById('uploadfile');
 
-            form.onsubmit = function(event) {
+        connectedCallback() {
+        }
+
+        _submit(e) {
+            var fileSelect = document.getElementById('uploadfile');
 
                 // Get the files from the input
                 var files = fileSelect.files;
@@ -97,7 +95,6 @@
                 // Send the data.
                 xhr.send(formData)
                 }
-            }
         }
     }
     customElements.define('upload-button', PerformanceHelp);
