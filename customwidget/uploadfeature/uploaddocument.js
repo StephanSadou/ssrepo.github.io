@@ -57,7 +57,7 @@
         init() {              
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            let form = this._shadowRoot.getElementById("formupload");
+            let form = this.shadowRoot.getElementById("formupload");
             form.addEventListener("submit",  event => {
                 var event = new Event("onSubmit");
                 this.fireChanged();           
@@ -69,7 +69,7 @@
         }
 
         fireChanged() {
-            var fileSelect = this._shadowRoot.getElementById('uploadfile');
+            var fileSelect = this.shadowRoot.getElementById('uploadfile');
 
             // Get the files from the input
             var files = fileSelect.files;
