@@ -1,7 +1,6 @@
 (function () {
     let tmpl = document.createElement('template');
-    tmpl.innerHTML = 
-    `
+    tmpl.innerHTML = `
 <head>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'>
     <style>
@@ -41,15 +40,13 @@
         }
     </style>
 </head>
-
 <body>
     <form id="formupload" enctype="multipart/form-data">
         <input id="uploadfile" name="uploadfile" type="file">
         <label id="uploadbutton-label" for="uploadfile">
             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
         </label>  
-    </form>
-         
+    </form>    
 </body>` ;   
    
     class PerformanceHelp extends HTMLElement {
@@ -57,9 +54,7 @@
             super();
             this.init();           
         }
-
-        init() {            
-              
+        init() {              
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this.addEventListener("change", event => {
@@ -68,43 +63,42 @@
             this.dispatchEvent(event);
             });           
         }
-
         fireChanged() {
-        var form = document.getElementById('formupload');
-        var fileSelect = document.getElementById('uploadfile');
+            var form = document.getElementById('formupload');
+            var fileSelect = document.getElementById('uploadfile');
 
-        // Get the files from the input
-        var files = fileSelect.files;
+            form.onchange = function(event) {
 
-        // Create a FormData object.
-        var formData = new FormData();
+                // Get the files from the input
+                var files = fileSelect.files;
 
-        //Grab only one file since this script disallows multiple file uploads.
-        var file = files[0]; 
+                // Create a FormData object.
+                var formData = new FormData();
 
+                //Grab only one file since this script disallows multiple file uploads.
+                var file = files[0]; 
 
-         // Add the file to the AJAX request.
-        formData.append('uploadfile', file, file.name);
+                 // Add the file to the AJAX request.
+                formData.append('uploadfile', file, file.name);
 
-        // Set up the request.
-        var xhr = new XMLHttpRequest();
+                // Set up the request.
+                var xhr = new XMLHttpRequest();
 
-        // Open the connection.
-        xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
+                // Open the connection.
+                xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
     
-        // Set up a handler for when the task for the request is complete.
-        xhr.onload = function () {
-          if (xhr.status === 200) {
-            console.log('Your upload is successful..');
-          } else {
-            console.log('An error occurred during the upload. Try again.');
-          }
+                // Set up a handler for when the task for the request is complete.
+                xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Your upload is successful..');
+                } else {
+                    console.log('An error occurred during the upload. Try again.');
+                }
         };
 
-        // Send the data.
-        xhr.send(formData);
-        }
-                
+                // Send the data.
+                xhr.send(formData);
+            }        
 }
     customElements.define('upload-button', PerformanceHelp);
 })();
