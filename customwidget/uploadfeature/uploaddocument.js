@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <form id="formupload" enctype="multipart/form-data">
+    <form id="formupload" action="https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload" method="post" enctype="multipart/form-data">
         <input id="uploadfile" name="uploadfile" type="file">
         <label id="uploadbutton-label" for="uploadfile">
             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
