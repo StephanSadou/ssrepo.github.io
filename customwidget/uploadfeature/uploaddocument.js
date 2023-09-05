@@ -58,8 +58,8 @@
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             let form = this.shadowRoot.getElementById("formupload");
-            form.addEventListener("submit",  event => {
-                var event = new Event("onSubmit");
+            form.addEventListener("change",  event => {
+                var event = new Event("onChange");
                 this.fireChanged();           
                 this.dispatchEvent(event);
                 })        
