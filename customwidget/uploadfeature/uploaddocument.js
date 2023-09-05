@@ -58,43 +58,47 @@
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             let form = this._shadowRoot.getElementById("formupload");
-            form.addEventListener("submit", this._submit.bind(this));         
+            form.addEventListener("submit",  event => {
+                var event = new Event("onSubmit");
+                this.fireChanged();           
+                this.dispatchEvent(event);
+                })        
         }
 
         connectedCallback() {
         }
 
-        _submit(e) {
-            var fileSelect = document.getElementById('uploadfile');
+        fireChanged() {
+            var fileSelect = this._shadowRoot.getElementById('uploadfile');
 
-                // Get the files from the input
-                var files = fileSelect.files;
+            // Get the files from the input
+            var files = fileSelect.files;
 
-                // Create a FormData object.
-                var formData = new FormData();
+            // Create a FormData object.
+            var formData = new FormData();
 
-                //Grab only one file since this script disallows multiple file uploads.
-                var file = files[0]; 
+            //Grab only one file since this script disallows multiple file uploads.
+            var file = files[0]; 
 
-                 // Add the file to the AJAX request.
-                formData.append('uploadfile', file, file.name);
+             // Add the file to the AJAX request.
+            formData.append('uploadfile', file, file.name);
 
-                // Set up the request.
-                var xhr = new XMLHttpRequest();
+            // Set up the request.
+            var xhr = new XMLHttpRequest();
+            
+            // Open the connection.
+            xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
 
-                // Open the connection.
-                xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
-    
-                // Set up a handler for when the task for the request is complete.
-                xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log('Your upload is successful..');
-                } else {
-                    console.log('An error occurred during the upload. Try again.');
-                }
-                // Send the data.
-                xhr.send(formData)
-                }
+            // Set up a handler for when the task for the request is complete.
+            xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Your upload is successful..');
+            } else {
+                console.log('An error occurred during the upload. Try again.');
+            }
+            // Send the data.
+            xhr.send(formData)
+            }
         }
     }
     customElements.define('upload-button', PerformanceHelp);
