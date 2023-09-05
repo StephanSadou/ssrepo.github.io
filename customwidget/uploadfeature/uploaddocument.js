@@ -67,7 +67,7 @@
             var form = document.getElementById('formupload');
             var fileSelect = document.getElementById('uploadfile');
 
-            form.onchange = function(event) {
+            form.onsubmit = function(event) {
 
                 // Get the files from the input
                 var files = fileSelect.files;
