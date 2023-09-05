@@ -17,6 +17,11 @@
 
         #uploadfile {
             display: none;
+            align-items: center; 
+            justify-content: center; 
+            width: 100%;
+            height: 100%; 
+            object-fit: contain; 
         }
 
         #uploadbutton-label {
@@ -29,7 +34,6 @@
             height: 100%
             padding: 6px 30px;
             cursor: pointer;
-            object-fit: contain;
         }
 
         #uploadbutton-label:hover {
@@ -58,8 +62,8 @@
               
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            this.addEventListener("submit", event => {
-            var event = new Event("onSubmit");
+            this.addEventListener("onchange", event => {
+            var event = new Event("onChange");
             this.fireChanged();           
             this.dispatchEvent(event);
             });           
@@ -88,7 +92,6 @@
         // Open the connection.
         xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
     
-
         // Set up a handler for when the task for the request is complete.
         xhr.onload = function () {
           if (xhr.status === 200) {
