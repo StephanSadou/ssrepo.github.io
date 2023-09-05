@@ -29,6 +29,7 @@
             height: 100%
             padding: 6px 30px;
             cursor: pointer;
+            object-fit: contain;
         }
 
         #uploadbutton-label:hover {
