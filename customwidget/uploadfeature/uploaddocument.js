@@ -60,7 +60,7 @@
         
         fireChanged() {
             var fileSelect = this._shadowRoot.getElementById('uploadfile');
-            console.log(var);
+            console.log(fileSelect);
 
         }
     }
