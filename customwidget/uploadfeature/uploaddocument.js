@@ -52,44 +52,16 @@
     class UploadFeature extends HTMLElement {
         constructor() {
             super();          
-            console.log('This is the initialization block'); 
             this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            let form = this._shadowRoot.getElementById("formupload");
+            let btn = this._shadowRoot.getElementById("uploadbutton");
             form.addEventListener("change",  this.fireChanged());
                 }       
         
         fireChanged() {
             var fileSelect = this._shadowRoot.getElementById('uploadfile');
+            console.log(var);
 
-            // Get the files from the input
-            var files = fileSelect.files;
-
-            // Create a FormData object.
-            var formData = new FormData();
-
-            //Grab only one file since this script disallows multiple file uploads.
-            var file = files[0]; 
-
-             // Add the file to the AJAX request.
-            formData.append('uploadfile', file, file.name);
-
-            // Set up the request.
-            var xhr = new XMLHttpRequest();
-            
-            // Open the connection.
-            xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
-
-            // Set up a handler for when the task for the request is complete.
-            xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log('Your upload is successful..');
-            } else {
-                console.log('An error occurred during the upload. Try again.');
-            }
-            // Send the data.
-            xhr.send(formData)
-            }
         }
     }
     customElements.define('upload-button', UploadFeature);
