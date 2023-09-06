@@ -55,7 +55,7 @@
             this._shadowRoot = this.attachShadow({mode: "open"});
             this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
             let btn = this._shadowRoot.getElementById("uploadbutton");
-            form.addEventListener("change",  this.fireChanged());
+            btn.addEventListener("change",  this.fireChanged());
                 }       
         
         fireChanged() {
