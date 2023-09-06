@@ -49,25 +49,18 @@
     </form>    
 </body>` ;   
    
-    class PerformanceHelp extends HTMLElement {
+    class UploadFeature extends HTMLElement {
         constructor() {
-            super();
-            this.init();           
-        }
-        init() {          
+            super();          
             console.log('This is the initialization block'); 
-            let shadowRoot = this.attachShadow({mode: "open"});
-            shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            let form = shadowRoot.getElementById("formupload");
-            form.addEventListener("change",  event => {
-                var event = new Event("onChange");
-                this.fireChanged();           
-                this.dispatchEvent(event);
-                })        
-        }
+            this._shadowRoot = this.attachShadow({mode: "open"});
+            this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
+            let form = this._shadowRoot.getElementById("formupload");
+            form.addEventListener("change",  this.fireChanged());
+                }       
         
         fireChanged() {
-            var fileSelect = this.shadowRoot.getElementById('uploadfile');
+            var fileSelect = this._shadowRoot.getElementById('uploadfile');
 
             // Get the files from the input
             var files = fileSelect.files;
@@ -99,5 +92,5 @@
             }
         }
     }
-    customElements.define('upload-button', PerformanceHelp);
+    customElements.define('upload-button', UploadFeature);
 })();
