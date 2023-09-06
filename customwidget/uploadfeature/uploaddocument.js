@@ -49,7 +49,7 @@
     </form>    
 </body>` ;   
    
-    class UploadFeature extends HTMLElement {
+    class Upload extends HTMLElement {
         constructor() {
             super();          
             this._shadowRoot = this.attachShadow({mode: "open"});
@@ -64,5 +64,5 @@
 
         }
     }
-    customElements.define('upload-button', UploadFeature);
+    customElements.define('upload-button', Upload);
 })();
