@@ -54,10 +54,11 @@
             super();
             this.init();           
         }
-        init() {              
+        init() {          
+            console.log('This is the initialization block'); 
             let shadowRoot = this.attachShadow({mode: "open"});
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            let form = this.shadowRoot.getElementById("formupload");
+            let form = shadowRoot.getElementById("formupload");
             form.addEventListener("change",  event => {
                 var event = new Event("onChange");
                 this.fireChanged();           
