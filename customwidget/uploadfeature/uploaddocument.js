@@ -6,11 +6,18 @@ linkNode.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/a
 document.head.appendChild(linkNode);
 
 const template = document.createElement('template');
-template.innerHTML = `<head>
+template.innerHTML = `
+<head>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'>
 <style>
     body {
         background-color: white;
+    }
+
+    .containter {
+        display: flex;
+        width: 100%;
+        height: 100%;
     }
 
     #file-input {
@@ -29,11 +36,12 @@ template.innerHTML = `<head>
         border: 1px solid black;
         background-color: #002354;
         border-radius: 10px;
-        width: 250px;
-        height: 50px;
+        width: 100%;
+        height: 100%;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        object-fit: contain;
     }
 
     #uploadbutton-label:hover {
@@ -42,14 +50,16 @@ template.innerHTML = `<head>
 </style>
 </head>
 <body>
-    <form id="formupload" action="https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload" method="post" enctype="multipart/form-data">
-        <input id="file-input" name="file-input" type="file">
-            <label id="uploadbutton-label" for="file-input"><i class="fa fa-cloud-upload" aria-hidden="true"></i> 
-            Upload File
-            </label>
-    </form>    
-</body>`
+    <div class="container">
+        <form id="formupload" action="http://127.0.0.1:5000/upload" method="post" enctype="multipart/form-data">
+            <input id="file-input" name="file-input" type="file">
+                <label id="uploadbutton-label" for="file-input"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
+                </label>
+        </form>    
+    </div>
 
+</body>`
+    
 customElements.define('upload-feature', class extends HTMLElement {
     constructor() {
         super();       
