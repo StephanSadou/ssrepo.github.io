@@ -11,7 +11,7 @@
 	"webcomponents": [
 		{
 			"kind": "main",
-			"tag": "upload-button",
+			"tag": "upload-feature",
 			"url": "https://stephansadou.github.io/ssrepo.github.io/customwidget/uploadfeature/uploaddocument.js",
 			"integrity": ""	,
 			"ignoreIntegrity": true
