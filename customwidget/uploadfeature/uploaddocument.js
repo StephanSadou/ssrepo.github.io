@@ -1,68 +1,103 @@
 (function () {
-    let tmpl = document.createElement('template');
-    tmpl.innerHTML = `
-<head>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'>
-    <style>
-        body {
-            background-color: white;
-        }
+var linkNode = document.createElement("link"); 
+linkNode.type = "text/css"; 
+linkNode.rel = "stylesheet"; 
+linkNode.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+document.head.appendChild(linkNode);
 
-        .containter {
-        display: flex;
+const template = document.createElement('template');
+template.innerHTML = `<head>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css' rel='stylesheet'>
+<style>
+    body {
+        background-color: white;
+    }
+
+    #file-input {
+        display: none;
+        align-items: center; 
+        justify-content: center; 
         width: 100%;
         height: 100%; 
-        }
+        object-fit: contain; 
+    }
 
-        #uploadfile {
-            display: none;
-            align-items: center; 
-            justify-content: center; 
-            width: 100%;
-            height: 100%; 
-            object-fit: contain; 
-        }
+    #uploadbutton-label {
+        display: flex;
+        color: white;
+        font-size: 21px;
+        border: 1px solid black;
+        background-color: #002354;
+        border-radius: 10px;
+        width: 250px;
+        height: 50px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
 
-        #uploadbutton-label {
-            color: white;
-            font-size: 21px;
-            border: 1px solid black;
-            background-color: #002354;
-            border-radius: 10px;
-            width: 100%;
-            height: 100%
-            padding: 6px 30px;
-            cursor: pointer;
-        }
-
-        #uploadbutton-label:hover {
-            background-color: rgb(128, 127, 127); /* change to your desired color */
-        }
-    </style>
+    #uploadbutton-label:hover {
+        background-color: rgb(128, 127, 127); /* change to your desired color */
+    }
+</style>
 </head>
 <body>
     <form id="formupload" action="https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload" method="post" enctype="multipart/form-data">
-        <input id="uploadfile" name="uploadfile" type="file">
-        <label id="uploadbutton-label" for="uploadfile">
-            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
-        </label>  
+        <input id="file-input" name="file-input" type="file">
+            <label id="uploadbutton-label" for="file-input"><i class="fa fa-cloud-upload" aria-hidden="true"></i> 
+            Upload File
+            </label>
     </form>    
-</body>` ;   
-   
-    class Upload extends HTMLElement {
-        constructor() {
-            super();          
-            this._shadowRoot = this.attachShadow({mode: "open"});
-            this._shadowRoot.appendChild(tmpl.content.cloneNode(true));
-            let form = this._shadowRoot.getElementById("formupload");
-            form.addEventListener("submit",  this.fireChanged());
-                }       
-        
-        fireChanged() {
-            var fileSelect = this._shadowRoot.getElementById('uploadfile');
-            console.log(fileSelect);
+</body>`
 
-        }
+customElements.define('upload-feature', class extends HTMLElement {
+    constructor() {
+        super();       
     }
-    customElements.define('upload-button', Upload);
+    connectedCallback() {
+
+        this.attachShadow({mode: 'open'});
+        const linkEl = document.createElement("link");
+        linkEl.type = "text/css";
+        linkEl.rel = "stylesheet";
+        linkEl.href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+        this.shadowRoot.appendChild(linkEl);
+        this.shadowRoot.appendChild(template.content.cloneNode(true))
+        this.shadowRoot.querySelector("#file-input").addEventListener("change",
+            event => {
+                var event = new Event("onChange");
+                this.GetFilename();
+                this.dispatchEvent(event);
+        })
+    }
+    GetFilename() {
+            // Get the files from the input
+            var file = this.shadowRoot.querySelector("#file-input").files[0];
+            console.log(file)
+
+            // Create a FormData object.
+            var formData = new FormData();
+    
+            // Add the file to the AJAX request.
+            formData.append('file-input', file, file.name);
+    
+            // Set up the request.
+            var xhr = new XMLHttpRequest();
+    
+            // Open the connection.
+            xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
+        
+            // Set up a handler for when the task for the request is complete.
+            xhr.onload = function () {
+              if (xhr.status === 200) {
+                console.log('Your upload is successful..');
+              } else {
+                console.log('An error occurred during the upload. Try again.');
+              }
+            };
+    
+            // Send the data.
+            xhr.send(formData);
+    }
+}); 
 })();
