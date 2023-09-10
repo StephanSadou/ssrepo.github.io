@@ -173,7 +173,7 @@ customElements.define('upload-feature', class extends HTMLElement {
     }
     
     GetFilename() {
-            let CreateToast function(type, icon, title, text){
+            let CreateToast = function(type, icon, title, text){
                     let notifications = this.shadowRoot.querySelector('.notifications');
                     let newToast = document.createElement('div');
                     newToast.innerHTML = `
