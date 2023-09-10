@@ -1,8 +1,13 @@
+var linkNode = document.createElement("link"); 
+linkNode.type = "text/css"; 
+linkNode.rel = "stylesheet"; 
+linkNode.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+document.head.appendChild(linkNode);
+
 (function () {
     let tmpl = document.createElement('template');
     tmpl.innerHTML = `
 <head>
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <style>
     body {
     background: white;
@@ -14,6 +19,7 @@
   }
 
   .btn {
+    color: #ffffff; 
     align-items: center;
     justify-content: center;
     background-color: grey; /* Blue background */
@@ -33,7 +39,7 @@
 </style>
 
 <div class="container">
-    <button class="btn"><i class='bx bxs-trash bx-lg' style='color:#ffffff'></i></button>
+    <button class="btn"><i class="fa-solid fa-trash-can"></i></button>
 </div>
 </head>`;   
    
@@ -46,6 +52,11 @@
         init() {            
               
             let shadowRoot = this.attachShadow({mode: "open"});
+            var fontstylelink = document.createElement("link"); 
+            fontstylelink.type = "text/css"; 
+            fontstylelink.rel = "stylesheet"; 
+            fontstylelink.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
+            shadowRoot.appendChild(fontstylelink);
             shadowRoot.appendChild(tmpl.content.cloneNode(true));
             this.addEventListener("click", event => {
             var event = new Event("onClick");
