@@ -172,7 +172,7 @@ customElements.define('upload-feature', class extends HTMLElement {
         })
     }
 
-     function CreateToast(type, icon, title, text){
+     this.CreateToast(type, icon, title, text){
         let notifications = this.shadowRoot.querySelector('.notifications');
         let newToast = document.createElement('div');
         newToast.innerHTML = `
@@ -210,9 +210,9 @@ customElements.define('upload-feature', class extends HTMLElement {
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
               if (xhr.status === 200) {
-                    CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
+                    this.CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
               } else {
-                    CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
+                    this.CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
               }
             };
     
