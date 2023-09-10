@@ -164,16 +164,7 @@ customElements.define('upload-feature', class extends HTMLElement {
         linkEl.href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
         this.shadowRoot.appendChild(linkEl);
         this.shadowRoot.appendChild(template.content.cloneNode(true))
-        this.shadowRoot.querySelector("#file-input").addEventListener("change",
-            event => {
-                var event = new Event("onChange");
-                this.GetFilename();
-                this.dispatchEvent(event);
-        })
-    }
-    
-    GetFilename() {
-            let CreateToast = function(type, icon, title, text){
+        let CreateToast = function(type, icon, title, text){
                     let notifications = this.shadowRoot.querySelector('.notifications');
                     let newToast = document.createElement('div');
                     newToast.innerHTML = `
@@ -190,7 +181,15 @@ customElements.define('upload-feature', class extends HTMLElement {
                         ()=>newToast.remove(), 5000
                     )
                 }
-        
+        this.shadowRoot.querySelector("#file-input").addEventListener("change",
+            event => {
+                var event = new Event("onChange");
+                this.GetFilename();
+                this.dispatchEvent(event);
+        })
+    }
+    
+    GetFilename() {
             // Get the files from the input
             var file = this.shadowRoot.querySelector("#file-input").files[0];
             console.log(file)
@@ -210,9 +209,9 @@ customElements.define('upload-feature', class extends HTMLElement {
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
               if (xhr.status === 200) {
-                    CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
+                    this.CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
               } else {
-                    CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
+                    this.CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
               }
             };
     
