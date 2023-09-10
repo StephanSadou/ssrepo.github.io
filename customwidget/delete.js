@@ -22,16 +22,16 @@ document.head.appendChild(linkNode);
     color: #ffffff; 
     align-items: center;
     justify-content: center;
-    background-color: grey; /* Blue background */
-    border-radius: 5px; /* Remove borders */
-    cursor: pointer; /* Mouse pointer on hover */
+    background-color: #002354;
+    border-radius: 5px; 
+    cursor: pointer; 
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
     
   .btn:hover {
-    background-color: #002354;
+    background-color: #807F7F;
     }
    
       }
