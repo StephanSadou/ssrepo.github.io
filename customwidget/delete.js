@@ -39,7 +39,7 @@ document.head.appendChild(linkNode);
 </style>
 
 <div class="container">
-    <button class="btn"><i class="fa-solid fa-trash-can"></i></button>
+    <button class="btn"><i class="fa-solid fa-trash-can fa-xl"></i></button>
 </div>
 </head>`;   
    
