@@ -209,9 +209,9 @@ customElements.define('upload-feature', class extends HTMLElement {
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
               if (xhr.status === 200) {
-                    this.CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
+                    CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
               } else {
-                    this.CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
+                    CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
               }
             };
     
