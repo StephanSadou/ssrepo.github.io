@@ -172,7 +172,7 @@ customElements.define('upload-feature', class extends HTMLElement {
         })
     }
 
-     this.CreateToast(type, icon, title, text){
+     this.CreateToast = function(type, icon, title, text){
         let notifications = this.shadowRoot.querySelector('.notifications');
         let newToast = document.createElement('div');
         newToast.innerHTML = `
