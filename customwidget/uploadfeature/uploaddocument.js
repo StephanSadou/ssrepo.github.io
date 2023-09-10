@@ -171,26 +171,26 @@ customElements.define('upload-feature', class extends HTMLElement {
                 this.dispatchEvent(event);
         })
     }
-
-    CreateToast(type, icon, title, text){
-        let notifications = this.shadowRoot.querySelector('.notifications');
-        let newToast = document.createElement('div');
-        newToast.innerHTML = `
-            <div class="toast ${type}">
-                <i class="${icon}"></i>
-                <div class="content">
-                    <div class="title">${title}</div>
-                    <span>${text}</span>
-                </div>
-                <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
-            </div>`;
-        notifications.appendChild(newToast);
-        newToast.timeOut = setTimeout(
-            ()=>newToast.remove(), 5000
-        )
-    }
     
     GetFilename() {
+            let CreateToast function(type, icon, title, text){
+                    let notifications = this.shadowRoot.querySelector('.notifications');
+                    let newToast = document.createElement('div');
+                    newToast.innerHTML = `
+                        <div class="toast ${type}">
+                            <i class="${icon}"></i>
+                            <div class="content">
+                                <div class="title">${title}</div>
+                                <span>${text}</span>
+                            </div>
+                            <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
+                        </div>`;
+                    notifications.appendChild(newToast);
+                    newToast.timeOut = setTimeout(
+                        ()=>newToast.remove(), 5000
+                    )
+                }
+        
             // Get the files from the input
             var file = this.shadowRoot.querySelector("#file-input").files[0];
             console.log(file)
@@ -210,9 +210,9 @@ customElements.define('upload-feature', class extends HTMLElement {
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
               if (xhr.status === 200) {
-                    this.CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
+                    CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
               } else {
-                    this.CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
+                    CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
               }
             };
     
