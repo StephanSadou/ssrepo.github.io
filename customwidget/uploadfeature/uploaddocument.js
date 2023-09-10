@@ -108,6 +108,7 @@ customElements.define('upload-feature', class extends HTMLElement {
     
             // Send the data.
             xhr.send(formData);
+            this.shadowRoot.querySelector("#file-input").value = null;
     }
 }); 
 })();
