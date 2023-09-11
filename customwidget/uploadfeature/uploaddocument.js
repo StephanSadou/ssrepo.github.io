@@ -15,17 +15,18 @@ template.innerHTML = `
     }
 
     .containter {
-        display: "flex",
-        objectFit: "cover",
-        width: "auto",
-        height: "450px",
-        overflowY: "scroll",
+        display: flex;
+        width: 100%;
+        height: 100%;
     }
 
     #file-input {
         display: none;
         align-items: center; 
         justify-content: center; 
+        width: 100%;
+        height: 100%; 
+        object-fit: contain; 
     }
 
     #uploadbutton-label {
@@ -35,6 +36,8 @@ template.innerHTML = `
         border: 1px solid black;
         background-color: #002354;
         border-radius: 10px;
+        width: 100%;
+        height: 100%;
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -42,114 +45,20 @@ template.innerHTML = `
     }
 
     #uploadbutton-label:hover {
-        background-color: rgb(128, 127, 127);
-    }
-    .notifications{
-        position: fixed;
-        top: 30px;
-        right: 20px;
-    }
-    .toast{
-        position: relative;
-        padding: 10px;
-        color: #fff;
-        margin-bottom: 10px;
-        width: 400px;
-        display: grid;
-        grid-template-columns: 70px 1fr 70px;
-        border-radius: 5px;
-        --color: #0abf30;
-        background-image: 
-            linear-gradient(
-                to right, #0abf3055, #22242f 30%
-            ); 
-        animation: show 0.3s ease 1 forwards  
-    }
-    .toast i{
-        color: var(--color);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: x-large;
-    }
-
-    .toast i:last-child {
-        color: #aeb0d7;
-        cursor: pointer;
-    }
-
-    .toast .title{
-        font-size: x-large;
-        font-weight: bold;
-    }
-    .toast span, .toast i:nth-child(3){
-        color: #fff;
-        opacity: 0.6;
-    }
-    @keyframes show{
-        0%{
-            transform: translateX(100%);
-        }
-        40%{
-            transform: translateX(-5%);
-        }
-        80%{
-            transform: translateX(0%);
-        }
-        100%{
-            transform: translateX(-10%);
-        }
-    }
-    .toast::before{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        background-color: var(--color);
-        width: 100%;
-        height: 3px;
-        content: '';
-        box-shadow: 0 0 10px var(--color);
-        animation: timeOut 5s linear 1 forwards
-    }
-    @keyframes timeOut{
-        to{
-            width: 0;
-        }
-    }
-    .toast.error{
-        --color: #f24d4c;
-        background-image: 
-            linear-gradient(
-                to right, #f24d4c55, #22242F 30%
-            );
-    }
-    .toast.warning{
-        --color: #e9bd0c;
-        background-image: 
-            linear-gradient(
-                to right, #e9bd0c55, #22242F 30%
-            );
-    }
-    .toast.info{
-        --color: #3498db;
-        background-image: 
-            linear-gradient(
-                to right, #3498db55, #22242F 30%
-            );
+        background-color: rgb(128, 127, 127); /* change to your desired color */
     }
 </style>
 </head>
 <body>
-    <div class="notifications"></div>       
     <div class="container">
         <form id="formupload" action="http://127.0.0.1:5000/upload" method="post" enctype="multipart/form-data">
             <input id="file-input" name="file-input" type="file">
-                <label id="uploadbutton-label" for="file-input"><i class="fa fa-cloud-upload" aria-hidden="true"></i><span> Upload File
-                </span></label>
+                <label id="uploadbutton-label" for="file-input"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Upload File
+                </label>
         </form>    
     </div>
-</body>
-`
+
+</body>`
     
 customElements.define('upload-feature', class extends HTMLElement {
     constructor() {
@@ -164,23 +73,6 @@ customElements.define('upload-feature', class extends HTMLElement {
         linkEl.href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css";
         this.shadowRoot.appendChild(linkEl);
         this.shadowRoot.appendChild(template.content.cloneNode(true))
-        let CreateToast = function(type, icon, title, text){
-                    let notifications = this.shadowRoot.querySelector('.notifications');
-                    let newToast = document.createElement('div');
-                    newToast.innerHTML = `
-                        <div class="toast ${type}">
-                            <i class="${icon}"></i>
-                            <div class="content">
-                                <div class="title">${title}</div>
-                                <span>${text}</span>
-                            </div>
-                            <i class="fa-solid fa-xmark" onclick="(this.parentElement).remove()"></i>
-                        </div>`;
-                    notifications.appendChild(newToast);
-                    newToast.timeOut = setTimeout(
-                        ()=>newToast.remove(), 5000
-                    )
-                }
         this.shadowRoot.querySelector("#file-input").addEventListener("change",
             event => {
                 var event = new Event("onChange");
@@ -188,7 +80,6 @@ customElements.define('upload-feature', class extends HTMLElement {
                 this.dispatchEvent(event);
         })
     }
-    
     GetFilename() {
             // Get the files from the input
             var file = this.shadowRoot.querySelector("#file-input").files[0];
@@ -209,9 +100,9 @@ customElements.define('upload-feature', class extends HTMLElement {
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
               if (xhr.status === 200) {
-                    CreateToast('succes', 'fa-solid fa-circle-check', 'Success', 'Upload Successful!');
+                console.log('Your upload is successful..');
               } else {
-                    CreateToast('error', 'fa-solid fa-circle-exclamation', 'Error', 'An error has occurred during the upload');
+                console.log('An error occurred during the upload. Try again.');
               }
             };
     
