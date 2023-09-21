@@ -95,7 +95,7 @@ customElements.define('upload-feature', class extends HTMLElement {
             var xhr = new XMLHttpRequest();
     
             // Open the connection.
-            xhr.open('POST', 'https://tysonwbdev.cfapps.eu10.hana.ondemand.com/upload', true);
+            xhr.open('POST', 'https://tyfwbproduction.cfapps.eu10.hana.ondemand.com/upload', true);
         
             // Set up a handler for when the task for the request is complete.
             xhr.onload = function () {
